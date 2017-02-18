@@ -14,12 +14,11 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get install \
     -y --force-yes  \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Set up MIME types
+# Set up MIME types, daemon paths and admin username
 RUN sh -c "echo 'image/urf urf string(0,UNIRAST<00>)' > /usr/share/cups/mime/airprint.types" \
  && sh -c "echo 'image/urf application/pdf 100 pdftoraster' > /usr/share/cups/mime/airprint.convs" \
  && mkdir -p /var/log/supervisor \
  && mkdir -p /var/run/dbus \
- && echo 'cups' > /etc/hostname \
  && useradd -G lp,lpadmin -s /bin/bash cups \
  && echo 'cups:cups' | chpasswd
 
