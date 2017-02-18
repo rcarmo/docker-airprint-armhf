@@ -8,7 +8,9 @@ See the `Makefile` for an example of how to set up the `lan` network. After that
 
 	docker run -ti --net=lan -h cups rcarmo/airprint:armhf
 	
-	# now go to https://cups.local/admin, login as cups/cups and add your printer
+	# now go to https://cups.local:631/admin, login as cups/cups and add your printer
+	
+	# then commit the configured container
 	docker commit <your container PID> airprint:configured
 	
 	# set up configured container as daemon
