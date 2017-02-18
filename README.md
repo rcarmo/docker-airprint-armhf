@@ -11,5 +11,5 @@ See the `Makefile` for an example of how to set up the `lan` network. After that
 	# now go to https://cups.local/admin, login as cups/cups and add your printer
 	docker commit <your container PID> airprint:configured
 	
-        # set up configured container as daemon
+	# set up configured container as daemon
 	docker run -d --restart unless-stopped --net=lan -h cups airprint:configured
