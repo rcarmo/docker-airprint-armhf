@@ -1,5 +1,6 @@
+IMAGE_NAME=rcarmo/airprint:armhf
 build: Dockerfile
-	docker build -t rcarmo/airprint:armhf .
+	docker build -t ${IMAGE_NAME} .
 
 network:
 	-docker network create -d macvlan \
@@ -10,10 +11,14 @@ network:
 	lan
 
 test: network
-	docker run --net=lan -h cups rcarmo/airprint:armhf
+	docker run --net=lan -h cups ${IMAGE_NAME}
 
 shell:
-	docker run --net=lan -h cups -it rcarmo/airprint:armhf /bin/bash
+	docker run --net=lan -h cups -it ${IMAGE_NAME} /bin/bash
 
 push:
-	docker push rcarmo/airprint
+	docker push ${IMAGE_NAME}
+
+clean:
+	-docker rm -v $$(docker ps -a -q -f status=exited)
+	-docker rmi $$(docker images -q -f dangling=true)-docker rmi $(IMAGE_NAME)
