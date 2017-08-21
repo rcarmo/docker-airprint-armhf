@@ -15,3 +15,10 @@ See the `Makefile` for an example of how to set up the `lan` network. After that
 	
 	# set up configured container as daemon
 	docker run -d --restart unless-stopped --net=lan -h cups airprint:configured
+
+
+## Notes
+
+The `urftopdf` folder contains a snapshot of [this repo][u] with greyscale 8 bit unirast support, which may come in useful depending on the version of CUPS. It is not added to the container by default (yet).
+
+[u]: https://github.com/superna9999/urftopdf
